@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bouncing Ball</title>
+    <style>
+      html,body{margin:0;padding:0;height:100%;overflow:hidden}canvas{background-color:#fff;display:block;height:100%;width:100%}
+    </style>
+  </head>
+  <body>
+    <canvas></canvas>
+    <script>
+      const canvas=document.querySelector("canvas");const ctx=canvas.getContext("2d");const width=(canvas.width=window.innerWidth);const height=(canvas.height=window.innerHeight);const ball={x:100,y:100,radius:25,color:"#f00",velocityX:5,velocityY:5};function update(){ball.x+=ball.velocityX;ball.y+=ball.velocityY;if(ball.x+ball.radius>width||ball.x-ball.radius<0){ball.velocityX=-ball.velocityX}if(ball.y+ball.radius>height||ball.y-ball.radius<0){ball.velocityY=-ball.velocityY}ctx.clearRect(0,0,width,height);ctx.beginPath();ctx.arc(ball.x,ball.y,ball.radius,0,Math.PI*2,false);ctx.fillStyle=ball.color;ctx.fill();requestAnimationFrame(update)}update()
+    </script>
+  </body>
+</html>
